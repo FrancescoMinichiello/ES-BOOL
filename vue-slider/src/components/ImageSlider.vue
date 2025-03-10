@@ -9,19 +9,58 @@ const images = ref([
 </script>
 
 <template>
-    <div id="carouselExample" class="carousel slide w-75 mx-auto mt-5" data-bs-ride="carousel">
+    <div id="carouselExample" class="carousel slide custom-slider" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div v-for="(image, index) in images" :key="index" class="carousel-item" :class="{ active: index === 0 }">
-                <img :src="image" class="d-block w-100" alt="Slide image" />
+                <img :src="image" class="d-block w-100 rounded-3 shadow-lg" alt="Slide image" />
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+        <button class="carousel-control-prev custom-btn" type="button" data-bs-target="#carouselExample"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+        <button class="carousel-control-next custom-btn" type="button" data-bs-target="#carouselExample"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
         </button>
     </div>
 </template>
+
+<style scoped>
+.custom-slider {
+    max-width: 700px;
+    margin: 30px auto;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item.active img {
+    transform: scale(1.03);
+}
+
+.custom-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+}
+</style>
